@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: infrastructures-rabbit-api
+  profiles:
+    active: test
+
+
+server:
+  port: 10005 # 随机端口，方便启动多个消费者

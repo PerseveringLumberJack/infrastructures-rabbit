@@ -1,0 +1,81 @@
+package com.example.config;
+
+import org.springframework.amqp.core.*;
+import org.springframework.amqp.rabbit.batch.BatchingStrategy;
+import org.springframework.amqp.rabbit.batch.SimpleBatchingStrategy;
+import org.springframework.amqp.rabbit.core.BatchingRabbitTemplate;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.amqp.rabbit.connection.ConnectionFactory;
+import org.springframework.scheduling.TaskScheduler;
+import org.springframework.scheduling.concurrent.ConcurrentTaskScheduler;
+
+//@Configuration
+public class BatchingRabbitMessageConfig {
+
+    public static final String QUEUE = "INFRASTRUCTURES_RABBIT_BATCHING_QUEUE";
+
+    public static final String EXCHANGE = "INFRASTRUCTURES_RABBIT_BATCHING_EXCHANGE";
+
+    public static final String ROUTING_KEY = "INFRASTRUCTURES_RABBIT_BATCHING_ROUTING_KEY";
+
+/*
+        *//**
+         * 创建 Queue
+         * @return
+         *//*
+        @Bean
+        public Queue queue() {
+            return new Queue(QUEUE, // Queue 名字
+                    true, // durable: 是否持久化
+                    false, // exclusive: 是否排它
+                    false); // autoDelete: 是否自动删除
+        }
+
+        *//**
+         * 创建 Direct Exchange
+         * @return
+         *//*
+        @Bean
+        public DirectExchange exchange() {
+            return new DirectExchange(EXCHANGE,
+                    true,  // durable: 是否持久化
+                    false);  // exclusive: 是否排它
+        }
+
+        *//**
+         * 创建 Binding
+         * Exchange：EXCHANGE
+         * Routing key：ROUTING_KEY
+         * Queue：QUEUE
+         * @return
+         *//*
+        @Bean
+        public Binding binding() {
+            return BindingBuilder.bind(queue()).to(exchange()).with(ROUTING_KEY);
+        }
+
+
+
+    @Bean
+    public BatchingRabbitTemplate batchRabbitTemplate(ConnectionFactory connectionFactory) {
+
+        // 创建 BatchingStrategy 对象，代表批量策略
+
+        int batchSize = 10; // 超过收集的消息数量的最大条数。
+
+        int bufferLimit = 262144; // 每次批量发送消息的最大内存
+
+        int timeout = 30000; // 超过收集的时间的最大等待时长，单位：毫秒
+
+        BatchingStrategy batchingStrategy = new SimpleBatchingStrategy(batchSize, bufferLimit, timeout);
+
+        // 创建 TaskScheduler 对象，用于实现超时发送的定时器
+        TaskScheduler taskScheduler = new ConcurrentTaskScheduler();
+
+        // 创建 BatchingRabbitTemplate 对象
+        BatchingRabbitTemplate batchTemplate = new BatchingRabbitTemplate(batchingStrategy, taskScheduler);
+        batchTemplate.setConnectionFactory(connectionFactory);
+        return batchTemplate;
+    }*/
+}

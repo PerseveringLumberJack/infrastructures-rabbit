@@ -1,0 +1,10 @@
+
+  rabbitmq:
+    host: mq1.taurus.pub
+    port: 5672
+    username: dev1
+    password: c6dlxycbx18im9qyewg3xlsu1ohs8354
+    listener:
+      simple:
+        acknowledge-mode: manual
+    virtual-host: /devhost

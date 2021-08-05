@@ -1,0 +1,82 @@
+
+server:
+  port: 8301
+  tomcat:
+    uri-encoding: UTF-8
+    max-threads: 1000
+    min-spare-threads: 30
+    connection-timeout: 5000ms
+    servlet:
+      context-path: /
+    max-http-header-size: 81920
+
+
+spring:
+  devtools:
+    restart:
+      enabled: true
+  mvc:
+    servlet:
+      load-on-startup: 100
+      throw-exception-if-no-handler-found: true
+
+  application:
+    name: infrastructures-rabbit-biz
+  profiles:
+    active: test
+  #cloud:
+    # Spring Cloud Stream 配置项，对应 BindingServiceProperties 类
+    #stream:
+      # Binder 配置项，对应 BinderProperties Map
+      #binders:
+        #rabbit001:
+          #type: rabbit # 设置 Binder 的类型
+          #environment: # 设置 Binder 的环境配置
+            # 如果是 RabbitMQ 类型的时候，则对应的是 RabbitProperties 类
+            #spring:
+              #rabbitmq:
+                #host: localhost # RabbitMQ 服务的地址
+                #port: 5672 # RabbitMQ 服务的端口
+                #username: guest # RabbitMQ 服务的账号
+                #password: guest # RabbitMQ 服务的密码
+      # Binding 配置项，对应 BindingProperties Map
+        #bindings:
+          #demo01-output:
+            #destination: DEMO-TOPIC-01 # 目的地。这里使用 RabbitMQ Exchange
+            #content-type: application/json # 内容格式。这里使用 JSON
+            #binder: rabbit001 # 设置使用的 Binder 名字
+
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/**/*.xml
+  #实体扫描，多个package用逗号或者分号分隔
+  #typeAliasesPackage: com.leomaster.*
+  global-config:
+    #数据库相关配置
+    db-config:
+      #主键类型  AUTO:"数据库ID自增", INPUT:"用户输入ID", ID_WORKER:"全局唯一ID (数字类型唯一ID)", UUID:"全局唯一ID UUID";
+      id-type: AUTO
+      #字段策略 IGNORED:"忽略判断",NOT_NULL:"非 NULL 判断"),NOT_EMPTY:"非空判断"
+      field-strategy: NOT_NULL
+      #驼峰下划线转换
+      column-underline: true
+      logic-delete-value: -1
+      logic-not-delete-value: 0
+
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8001/eureka
+
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 120000 # 连接超时时间
+        readTimeout: 120000   # 读超时时间
+        loggerLevel: full # 日志级别
+
+batchSize: 2
+
