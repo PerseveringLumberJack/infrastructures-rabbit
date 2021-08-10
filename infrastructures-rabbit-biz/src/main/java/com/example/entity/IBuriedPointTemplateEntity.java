@@ -95,6 +95,8 @@ public class IBuriedPointTemplateEntity extends Model<IBuriedPointTemplateEntity
     @TableField("raw_data")
     private String rawData;
 
+    @TableField("share_platform")
+    private String sharePlatform;
 
     @Override
     protected Serializable pkVal() {

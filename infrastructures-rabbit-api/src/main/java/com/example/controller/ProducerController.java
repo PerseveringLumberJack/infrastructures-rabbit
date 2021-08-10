@@ -42,11 +42,7 @@ public class ProducerController {
         /**
          * 一下为测试代码，这里主要完成参数校验
          */
-       /*long aLong = RandomUtils.nextLong();
-        BuriedPointStatistaReq req = new BuriedPointStatistaReq();
-        req.setAid(String.valueOf(aLong));
-        req.setCode(String.valueOf(aLong));
-        req.setType("template");*/
+
         Long cts = Calendar.getInstance().getTimeInMillis() / 1000;
         req.setCts(cts.intValue());
         req.setIp(IpUtil.getRealIP(request));

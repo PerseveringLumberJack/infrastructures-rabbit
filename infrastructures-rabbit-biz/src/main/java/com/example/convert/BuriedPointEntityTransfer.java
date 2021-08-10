@@ -28,7 +28,8 @@ public interface BuriedPointEntityTransfer {
             @Mapping(target = "ts",source = "dataDtos.ts"),
             @Mapping(target = "action", source = "dataDtos.action"),
             @Mapping(target = "templateId",source = "dataDtos.templateId"),
-            @Mapping(target = "rawData",source = "dataDtos.rawData")
+            @Mapping(target = "rawData",source = "dataDtos.rawData"),
+            @Mapping(target = "sharePlatform",source = "dataDtos.sharePlatform")
     })
     IBuriedPointTemplateEntity convertBuriedPointStatistaEntity(BuriedPointStatistaDataDto dataDtos);
 

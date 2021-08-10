@@ -25,5 +25,7 @@ public class BuriedPointStatistaDataDto implements Serializable{
 	@ApiModelProperty(value = "JOSN串")
 	private String rawData;
 
+	@ApiModelProperty(value = "分享平台")
+	private String sharePlatform;
 
 }
