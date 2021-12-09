@@ -14,8 +14,8 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 
 
-@EnableEurekaClient
-@EnableHystrix
+//@EnableEurekaClient
+//@EnableHystrix
 @Configuration
 @Slf4j
 @SpringBootApplication(scanBasePackages = "com.example.*")
