@@ -37,13 +37,12 @@ spring:
   rabbitmq:
     host: mq1.taurus.pub
     port: 5672
-    username: dev1
-    password: c6dlxycbx18im9qyewg3xlsu1ohs8354
+    username: devpush
+    password: xwC32LLDRJ1wj4x2wUdQkQ57MQuf9szI
     listener:
       simple:
         acknowledge-mode: manual
-        max-concurrency: 20
-    virtual-host: /devhost
+    virtual-host: /devpushost
 
 
 
